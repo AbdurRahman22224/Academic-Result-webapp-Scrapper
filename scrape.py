@@ -11,8 +11,8 @@ from selenium.webdriver.chrome.options import Options
 
 def download_driver():
     chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Ensure headless mode for servers
     chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--headless")  # Ensure headless mode for servers
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-gpu")
     # chrome_options.binary_location = "/usr/bin/google-chrome"  # Explicit Chrome binary path
@@ -29,7 +29,6 @@ def generate_roll_number(branch, year, course, i):
     formatted_number = f"{i:03}"  # Format the number to always have 3 digits
     return f"{year}{course}{branch[:3].upper()}{formatted_number}"
 
-# Scraping function to get SGPA and CGPA
 def scrape_results(driver, user_name, sem):
     driver.get('http://202.168.87.90/StudentPortal/Login.aspx')
     time.sleep(1.3)
