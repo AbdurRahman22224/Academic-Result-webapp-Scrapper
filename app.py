@@ -26,7 +26,7 @@ if st.button("Start Scraping"):
     result_placeholder = st.empty()
 
     # Loop through and scrape for all the students
-    for i in range(30, num_stu):
+    for i in range(1, num_stu):
 
         roll_no = generate_roll_number(branch, year, course, i)
         name, sgpa, cgpa = scrape_results(driver, roll_no, sem)
