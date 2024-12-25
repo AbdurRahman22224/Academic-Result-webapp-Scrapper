@@ -22,7 +22,7 @@ git clone https://github.com/AbdurRahman22224/Academic-Result-webapp-Scrapper.gi
 Navigate to the project directory:
 
 ```bash
-cd your-repository-name
+cd Academic-Result-webapp-Scrapper
 ```
 
 ---
