@@ -1,10 +1,8 @@
-Here’s a sample README for your scraping project:
-
 ---
 
 # Scraping Project
 
-This project is a web scraping application designed to scrape result from my institute result website. It utilizes `Selenium` for browser automation.
+This project is a web scraping application designed to scrape results from my institute's result published website. It utilizes `Selenium` for browser automation.
 - [Clone the Repository](#clone-the-repository)
 - [Install Dependencies](#install-dependencies)
 - [Run the Application](#run-the-application)
