@@ -59,7 +59,6 @@ if st.button("Start Scraping"):
         
         if name and sgpa and cgpa:
             subject_marks = dict(zip(subjects, marks))
-            # subject_mark_dict = {f"Sub_{sub}": mark for sub, mark in zip(subjects, marks)}
             results.append({
                 "Roll No": roll_no,
                 "Name": name,
