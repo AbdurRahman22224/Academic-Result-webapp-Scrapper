@@ -6,7 +6,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.alert import Alert
 from webdriver_manager.chrome import ChromeDriverManager
 import time
-import json
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 
 def download_driver():
@@ -102,9 +105,46 @@ def scrape_results(driver, user_name, sem):
     
         name = driver.find_element(By.ID, "lblStudentName").text
         sgpa = driver.find_element(By.ID, "lblSPI").text
-        cgpa = driver.find_element(By.ID, "lblCPI").text
+        cgpa = driver.find_element(By.ID, "lblCPI").text 
         return name, sgpa, cgpa
     
     except:
         return None, None, None
+    # 8th 
+# //*[@id="PnlShowResult"]/table/tbody/tr[4]/td/table/tbody/tr[2]/td[2]
+# //*[@id="PnlShowResult"]/table/tbody/tr[4]/td/table/tbody/tr[3]/td[2]
+# //*[@id="PnlShowResult"]/table/tbody/tr[4]/td/table/tbody/tr[4]/td[2]
+
+# 6th
+# //*[@id="PnlShowResult"]/table/tbody/tr[4]/td/table/tbody/tr[2]/td[2]  //*[@id="PnlShowResult"]/table/tbody/tr[4]/td/table/tbody/tr[2]/td[8] //*[@id="PnlShowResult"]/table/tbody/tr[4]/td/table/tbody/tr[3]/td[8]
+     
+def genrate_subjects(driver): 
+    subjects = []
+    i = 2  # Adjust index if needed
+    while True:
+        try:
+            xpath = f'//*[@id="PnlShowResult"]/table/tbody/tr[4]/td/table/tbody/tr[{i}]/td[2]'
+            element = driver.find_element("xpath", xpath)
+            print("Subject found:", repr(element.text.strip()))
+            subjects.append(element.text.strip()) 
+            i += 1
+        except Exception as e:
+            print("Subject element not found. Reason:", e)
+            break  # Exit loop when no more subjects
+    return subjects
+
+  
+
+
+# def genrate_subjects(driver):
+#     try:
+#         # Try finding the first subject using relative XPath
     
+#         xpath = '//*[@id="PnlShowResult"]/table/tbody/tr[4]/td/table/tbody/tr[]/td[2]'
+#         element = driver.find_element(By.XPATH, xpath)
+#         print("Subject found:", repr(element.text.strip()))
+#         return element.text.strip()
+#     except Exception as e:
+#         print("Subject element not found. Reason:", e)
+#         return None
+
